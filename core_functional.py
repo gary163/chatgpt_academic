@@ -5,38 +5,187 @@
 from toolbox import clear_line_break
 
 
-def get_core_functions():
+def get_sql_functions():
     return {
-        "查找语法错误": {
-            "Prefix":   r"Can you help me ensure that the grammar and the spelling is correct? " +
-                        r"Do not try to polish the text, if no mistake is found, tell me that this paragraph is good." +
-                        r"If you find grammar or spelling mistakes, please list mistakes you find in a two-column markdown table, " +
-                        r"put the original text the first column, " +
-                        r"put the corrected text in the second column and highlight the key words you fixed.""\n"
-                        r"Example:""\n"
-                        r"Paragraph: How is you? Do you knows what is it?""\n"
-                        r"| Original sentence | Corrected sentence |""\n"
-                        r"| :--- | :--- |""\n"
-                        r"| How **is** you? | How **are** you? |""\n"
-                        r"| Do you **knows** what **is** **it**? | Do you **know** what **it** **is** ? |""\n"
-                        r"Below is a paragraph from an academic paper. "
-                        r"You need to report all grammar and spelling mistakes as the example before."
-                        + "\n\n",
-            "Suffix":   r"",
-            "PreProcess": clear_line_break,    # 预处理：清除换行符
-        },
-        "解释代码": {
-            "Prefix": r"请解释以下代码：" + "\n```\n",
-            "Suffix": "\n```\n",
-        },
-        "SQL优化": {
-            "Prefix": r"你是一个优秀的SQL专家，请帮我优化以下SQL代码：" + "\n```\n",
-            "Suffix": "\n```\n",
-        },
-        "找图片": {
-            "Prefix":   r"我需要你找一张网络图片。使用Unsplash API(https://source.unsplash.com/960x640/?<英语关键词>)获取图片URL，" +
-                        r"然后请使用Markdown格式封装，并且不要有反斜线，不要用代码块。现在，请按以下描述给我发送图片：" + "\n\n",
-            "Suffix":   r"",
-        },
+        "SQL语句优化": {
+            # 前言
+            "Prefix": """
+                        你的任务是以DBA专家的角色优化用户输入的语句,检查以下方面:
+                            1 - SELECT语句的优化
+                            2 - JOIN操作的优化，如果是笛卡尔积的SQL，尝试提出替换的方案
+                            3 - WHERE子句的优化
+                            4 - 子查询的优化
+                            5 - INSERT、UPDATE和DELETE语句的优化
+                            6 - 数据库设计的优化
 
+                        sql语句在Text:<>分隔符中，最后请格式化输出优化过后的SQL语句
+                    Text: <\n
+                    """,
+            # 后语
+            "Suffix": "\n>",
+            "Color": r"secondary",  # 按钮颜色
+        },
+        "SQL解释": {
+            # 前言
+            "Prefix": """
+                        作为一个AI语言模型，我被要求为给定的SQL代码片段提供注释:
+                            1 - 表的字段信息在Text:<>分隔符中
+                            2 - 请为给定的SQL代码片段生成相应的注释
+                            3 - 确保注释简洁、清晰且有助于理解代码的目的和逻辑
+                            4 - 对于每个主要的部分和操作，请解释它们的作用和如何与其他部分协同工作
+                        Text: <\n
+                        """,
+            # 后语
+            "Suffix": "\n>",
+            "Color": r"secondary",  # 按钮颜色
+        },
+        "生成SQL测试语句": {
+            # 前言
+            "Prefix": """
+                            你的任务是为用户输入的sql创建测试数据:
+                                1 - 表的字段信息在Text:<>分隔符中
+                                2 - 如果输入不包含表和字段，提示"请输入表的字段信息"
+                                3 - 生成5条测试数据
+                                4 - 编程语言是sql，直接按sql插入格式输出即可，请不用输出任何例如Python代理片段
+                        Text: <\n
+                        """,
+            # 后语
+            "Suffix": "\n>",
+            "Color": r"secondary",  # 按钮颜色
+        },
+        "Mysql建表语句转StarRocks建表语句": {
+            # 前言
+            "Prefix":   """
+                            你的任务是把来自mysql的建表语句转换为StarRocks的建表SQL，请遵循以下规则:
+                            1 - 源sql语句在Text:<>分隔符中
+                            2 - 源sql中，如果含有text类型的字段，统一转换为varchar(5000),
+                                如源sql有字段`name`，类型为text, 则转换为目标SQL的类型为varchar(5000)
+                            3 - 'AUTO_INCREMENT','UNIQUE INDEX'，'INDEX','PRIMARY KEY',
+                            'DEFAULT CURRENT_TIMESTAMP'等关键字，StarRocks不支持
+                            4 - 最后一个字段是 `ds` DATE，需额外加上
+                            5 - 格式化输出
+                            统一按如下格式输出demo：
+                            create table if not exists table_name(
+                              `id` int(11)  NOT NULL ,
+                              ...
+                              `ds` DATE)
+                              PARTITION BY RANGE (ds) (
+                                START ("data1") END ("date2") EVERY (INTERVAL 1 DAY)
+                                )
+                            DISTRIBUTED BY HASH(id) BUCKETS 8
+                            PROPERTIES(
+                                "dynamic_partition.enable" = "true",
+                                "dynamic_partition.time_unit" = "DAY",
+                                "dynamic_partition.start" = "-30",
+                                "dynamic_partition.end" = "3",
+                                "dynamic_partition.prefix" = "p",
+                                "dynamic_partition.buckets" = "8"
+                            );
+                        Text: <\n
+                        """,
+            # 后语
+            "Suffix":    "\n>",
+            "Color":    r"secondary",    # 按钮颜色
+        },
+        "代码转为StarRocks建表语句": {
+            # 前言
+            "Prefix":   """
+                            你的任务是代码转换为StarRocks的建表SQL，请遵循以下规则:
+                            1 - 源sql语句在Text:<>分隔符中
+                            2 - 先分析代码，来源有Java的DTO,或PHP,Golang,Python的Class属性
+                            3 - 源sql中，如果含有text类型的字段，统一转换为varchar(5000)
+                            4 - 'AUTO_INCREMENT','UNIQUE INDEX'，'INDEX','PRIMARY KEY',
+                                'DEFAULT CURRENT_TIMESTAMP'等关键字，StarRocks不支持
+                            5 - 规范输出SQL建表语句    
+                            SQL请格式化输出，输出demo：
+                            create table if not exists table_name(
+                              `id` int(11)  NOT NULL ,
+                              ...
+                              )
+                            DISTRIBUTED BY HASH(id) BUCKETS 8
+                        Text: <\n
+                        """,
+            # 后语
+            "Suffix":    "\n>",
+            "Color":    r"secondary",    # 按钮颜色
+        },
+        "代码转为Mysql建表语句": {
+            # 前言
+            "Prefix": """
+                                你的任务是代码转换为mysql的建表SQL，请遵循以下规则:
+                                1 - 源sql语句在Text:<>分隔符中
+                                2 - 先分析代码，来源有Java的DTO,或PHP,Golang,Python的Class属性
+                                3 - 规范输出SQL建表语句，不要输出任意类型的代码块
+                            Text: <\n
+                            """,
+            # 后语
+            "Suffix": "\n>",
+            "Color": r"secondary",  # 按钮颜色
+        },
     }
+
+def get_code_functions():
+    return {
+        "生成单元测试代码": {
+            # 前言
+            "Prefix": """
+                        作为一个AI语言模型，我被要求为给定的代码片段生成单元测试代码，
+                        用户提供的代码片段可能是用 JAVA, PHP, Python或Go其中一种{language}语言写的
+                        你的任务是:
+                        1 - 用户输入的代码片段在Code:<>分隔符中
+                        2 - 识别用户输入的代码是何种{language}，请为给定的代码片段生成 {language} 的单元测试代码
+                        3 - 确保单元测试覆盖了提供代码的主要功能，并遵循编写指定语言测试的最佳实践。
+                    Code: <\n
+                    """,
+            # 后语
+            "Suffix": "\n>",
+            "Color": r"secondary",  # 按钮颜色
+        },
+        "生成代码注释": {
+            # 前言
+            "Prefix": """
+                        作为一个AI语言模型，我被要求为给定的代码片段生成代码注释。
+                        用户提供的代码片段可能是用 JAVA, PHP, Python或Go其中一种{language}语言写的
+                        你的任务是:
+                        1 - 用户输入的代码片段在Code:<>分隔符中
+                        2 - 识别用户输入的代码是何种{language}，请为给定的代码片段生成 {language} 的代码注释
+                        3 - 确保注释简洁明了，能够帮助其他开发者理解代码的功能和逻辑。
+                    Code: <\n
+                    """,
+            # 后语
+            "Suffix": "\n>",
+            "Color": r"secondary",  # 按钮颜色
+        },
+        "生成代码摘要": {
+            # 前言
+            "Prefix": """
+                        作为一个AI语言模型，我被要求为给定的代码片段生成代码摘要。
+                        用户提供的代码片段可能是用 JAVA, PHP, Python或Go其中一种{language}语言写的
+                        你的任务是:
+                        1 - 用户输入的代码片段在Code:<>分隔符中
+                        2 - 识别用户输入的代码是何种{language}，请为给定的代码片段生成 {language} 的代码摘要
+                        3 - 提供一个简短的摘要，概括代码的主要功能。
+                    Code: <\n
+                    """,
+            # 后语
+            "Suffix": "\n>",
+            "Color": r"secondary",  # 按钮颜色
+        },
+        "代码优化": {
+            # 前言
+            "Prefix": """
+                        作为一个AI语言模型，我被要求为给定的代码片段提供优化建议。
+                        用户提供的代码片段可能是用 JAVA, PHP, Python或Go其中一种{language}语言写的
+                        你的任务是:
+                        1 - 用户输入的代码片段在Code:<>分隔符中
+                        2 - 识别用户输入的代码是何种{language}，请为给定的代码片段生成 {language} 的代码优化建议
+                        3 - 确保建议具有实际性和可行性，以提高代码的性能、可读性和可维护性
+                        4 - 解释为什么这些建议可以优化代码，并在可能的情况下，提供具体的改进示例。
+                    Code: <\n
+                    """,
+            # 后语
+            "Suffix": "\n>",
+            "Color": r"secondary",  # 按钮颜色
+        },
+    }
+

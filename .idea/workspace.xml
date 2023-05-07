@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="916e7de3-fd00-447b-a913-ca3cca354a0f" name="Default Changelist" comment="feat: 修改部分功能">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_proxy.py" beforeDir="false" afterPath="$PROJECT_DIR$/check_proxy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core_functional.py" beforeDir="false" afterPath="$PROJECT_DIR$/core_functional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functional.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/crazy_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/crazy_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/下载arxiv论文翻译摘要.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/下载arxiv论文翻译摘要.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/代码重写为全英文_多线程.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/代码重写为全英文_多线程.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/总结word文档.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/总结word文档.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/批量总结PDF文档.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/批量总结PDF文档.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/批量总结PDF文档pdfminer.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/批量总结PDF文档pdfminer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/批量翻译PDF文档_多线程.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/批量翻译PDF文档_多线程.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/理解PDF文档内容.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/理解PDF文档内容.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/生成函数注释.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/生成函数注释.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/解析项目源代码.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/解析项目源代码.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/读文章写摘要.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/读文章写摘要.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/谷歌检索小助手.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/谷歌检索小助手.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crazy_functions/高级功能函数模板.py" beforeDir="false" afterPath="$PROJECT_DIR$/crazy_functions/高级功能函数模板.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/demo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/demo2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/公式.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/润色.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request_llm/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/request_llm/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request_llm/bridge_chatgpt.py" beforeDir="false" afterPath="$PROJECT_DIR$/request_llm/bridge_chatgpt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request_llm/bridge_tgui.py" beforeDir="false" afterPath="$PROJECT_DIR$/request_llm/bridge_tgui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/self_analysis.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/show_math.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/theme.py" beforeDir="false" afterPath="$PROJECT_DIR$/theme.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toolbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/toolbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/version" beforeDir="false" afterPath="$PROJECT_DIR$/version" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2O0syK9cCcIii9WFgEm5dHBeKaH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/kaifengyang/itchat",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="916e7de3-fd00-447b-a913-ca3cca354a0f" name="Default Changelist" comment="" />
+      <created>1680709086562</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680709086562</updated>
+      <workItem from="1680709091623" duration="7759000" />
+      <workItem from="1680924316337" duration="659000" />
+      <workItem from="1680924996792" duration="1034000" />
+      <workItem from="1681003279571" duration="1299000" />
+      <workItem from="1681004598017" duration="1625000" />
+      <workItem from="1681006266826" duration="745000" />
+      <workItem from="1681007152729" duration="500000" />
+      <workItem from="1681007787178" duration="14410000" />
+      <workItem from="1681261884137" duration="3096000" />
+      <workItem from="1682217256951" duration="814000" />
+      <workItem from="1682316627516" duration="5718000" />
+      <workItem from="1683477694407" duration="376000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: 修改部分功能">
+      <created>1681026555767</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681026555767</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: 修改部分功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 修改部分功能" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/chatgpt_academic$PDF_.coverage" NAME="批量翻译PDF文档_多线程 Coverage Results" MODIFIED="1681008019526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crazy_functions" />
+    <SUITE FILE_PATH="coverage/chatgpt_academic$config_private.coverage" NAME="config_private Coverage Results" MODIFIED="1681008215268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/chatgpt_academic$main.coverage" NAME="main Coverage Results" MODIFIED="1681008051362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
