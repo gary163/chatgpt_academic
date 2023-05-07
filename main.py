@@ -14,8 +14,8 @@ def main():
 
     from check_proxy import get_current_version
     initial_prompt = "Serve me as a writing and programming assistant."
-    title_html = f"<h1 align=\"center\">ChatGPT 学术优化 {get_current_version()}</h1>"
-    description =  """代码开源和更新[地址🚀](https://github.com/binary-husky/chatgpt_academic)，感谢热情的[开发者们❤️](https://github.com/binary-husky/chatgpt_academic/graphs/contributors)"""
+    title_html = f"<h1 align=\"center\">IT GPT工具箱</h1>"
+    description = """"""
 
     # 问询记录, python 版本建议3.9+（越新越好）
     import logging
