@@ -89,7 +89,8 @@ def get_sql_functions():
                             2 - 先分析代码，来源有Java的DTO,或PHP,Golang,Python的Class属性
                             3 - 源sql中，如果含有text,string,varchar类型的字段，统一转换为varchar(5000)
                             4 - 如果字段没有注释，尝试补充中文comment
-                            5 - markdown格式化输出    
+                            5 - 最后一个字段是 `ds` DATE，需额外加上
+                            6 - markdown格式化输出    
                             SQL请格式化输出，输出demo：
                             create table if not exists table_name(
                               `id` int(11)  NOT NULL ,
@@ -115,7 +116,8 @@ def get_sql_functions():
                                     int 统一转换为bigint,decimal统一长度为decimal(30,8)
                                 3 - 原HiveSQL中将StarRocks不支持的关键字或语法自动屏蔽
                                 4 - 如果字段没有注释，尝试补充中文comment
-                                5 - markdown格式化输出    
+                                5 - 最后一个字段是 `ds` DATE，需额外加上
+                                6 - markdown格式化输出    
                                 SQL请格式化输出，输出demo：
                                 create table if not exists table_name(
                                   `id` int(11)  NOT NULL ,
@@ -141,7 +143,8 @@ def get_sql_functions():
                                     int 统一转换为bigint,NUMBER统一长度为decimal(30,8)
                                     3 - 原OracleSQL中将StarRocks不支持的关键字或语法自动屏蔽
                                     4 - 如果字段没有注释，尝试补充中文comment
-                                    5 - markdown格式化输出    
+                                    5 - 最后一个字段是 `ds` DATE，需额外加上
+                                    6 - markdown格式化输出    
                                     SQL请格式化输出，输出demo：
                                     create table if not exists table_name(
                                       `id` int(11)  NOT NULL ,
