@@ -58,29 +58,23 @@ def get_sql_functions():
             "Prefix":   """
                             你的任务是把来自mysql的建表语句转换为StarRocks的建表SQL，请遵循以下规则:
                             1 - 源sql语句在Text:<>分隔符中
-                            2 - 源sql中，如果含有text类型的字段，统一转换为varchar(5000),
-                                如源sql有字段`name`，类型为text, 则转换为目标SQL的类型为varchar(5000)
+                            2 - 源sql中，如果含有text,varchar类型的字段，统一转换为varchar(5000),
+                                int 统一转换为bigint,decimal统一长度为decimal(30,8)
                             3 - 'AUTO_INCREMENT','UNIQUE INDEX'，'INDEX','PRIMARY KEY',
                             'DEFAULT CURRENT_TIMESTAMP'等关键字，StarRocks不支持
                             4 - 最后一个字段是 `ds` DATE，需额外加上
-                            5 - 格式化输出
+                            5 - 如果字段没有注释，尝试补充中文comment
+                            6 - markdown格式化输出
                             统一按如下格式输出demo：
                             create table if not exists table_name(
                               `id` int(11)  NOT NULL ,
                               ...
-                              `ds` DATE)
-                              PARTITION BY RANGE (ds) (
-                                START ("data1") END ("date2") EVERY (INTERVAL 1 DAY)
-                                )
-                            DISTRIBUTED BY HASH(id) BUCKETS 8
-                            PROPERTIES(
-                                "dynamic_partition.enable" = "true",
-                                "dynamic_partition.time_unit" = "DAY",
-                                "dynamic_partition.start" = "-30",
-                                "dynamic_partition.end" = "3",
-                                "dynamic_partition.prefix" = "p",
-                                "dynamic_partition.buckets" = "8"
-                            );
+                              `ds` DATE
+                              ) COMMENT '表备注'
+                            PARTITION BY RANGE (`ds`) (
+                              START ("date1") END ("date2") EVERY (INTERVAL 1 MONTH)
+                            )
+                            DISTRIBUTED BY HASH(`id`) BUCKETS 9;
                         Text: <\n
                         """,
             # 后语
@@ -93,29 +87,86 @@ def get_sql_functions():
                             你的任务是代码转换为StarRocks的建表SQL，请遵循以下规则:
                             1 - 源sql语句在Text:<>分隔符中
                             2 - 先分析代码，来源有Java的DTO,或PHP,Golang,Python的Class属性
-                            3 - 源sql中，如果含有text类型的字段，统一转换为varchar(5000)
-                            4 - 'AUTO_INCREMENT','UNIQUE INDEX'，'INDEX','PRIMARY KEY',
-                                'DEFAULT CURRENT_TIMESTAMP'等关键字，StarRocks不支持
-                            5 - 规范输出SQL建表语句    
+                            3 - 源sql中，如果含有text,string,varchar类型的字段，统一转换为varchar(5000)
+                            4 - 如果字段没有注释，尝试补充中文comment
+                            5 - markdown格式化输出    
                             SQL请格式化输出，输出demo：
                             create table if not exists table_name(
                               `id` int(11)  NOT NULL ,
                               ...
-                              )
-                            DISTRIBUTED BY HASH(id) BUCKETS 8
+                              `ds` DATE
+                              ) COMMENT '表备注'
+                            PARTITION BY RANGE (`ds`) (
+                              START ("date1") END ("date2") EVERY (INTERVAL 1 DAY)
+                            )
+                            DISTRIBUTED BY HASH(`id`) BUCKETS 9;
                         Text: <\n
                         """,
             # 后语
             "Suffix":    "\n>",
             "Color":    r"secondary",    # 按钮颜色
         },
+        "HiveSQL转StarRocks建表语句": {
+            # 前言
+            "Prefix": """
+                                你的任务是把HiveSQL转换为StarRocks的建表SQL，请遵循以下规则:
+                                1 - 源HiveSQL语句在Text:<>分隔符中
+                                2 - 源sql中，如果含有string类型的字段，统一转换为varchar(5000),
+                                    int 统一转换为bigint,decimal统一长度为decimal(30,8)
+                                3 - 原HiveSQL中将StarRocks不支持的关键字或语法自动屏蔽
+                                4 - 如果字段没有注释，尝试补充中文comment
+                                5 - markdown格式化输出    
+                                SQL请格式化输出，输出demo：
+                                create table if not exists table_name(
+                                  `id` int(11)  NOT NULL ,
+                                  ...
+                                  `ds` DATE
+                                  ) COMMENT '表备注'
+                                PARTITION BY RANGE (`ds`) (
+                                  START ("date1") END ("date2") EVERY (INTERVAL 1 DAY)
+                                )
+                                DISTRIBUTED BY HASH(`id`) BUCKETS 9;
+                            Text: <\n
+                            """,
+            # 后语
+            "Suffix": "\n>",
+            "Color": r"secondary",  # 按钮颜色
+        },
+        "Oracle转StarRocks建表语句": {
+            # 前言
+            "Prefix": """
+                                你的任务是把Oracle转换为StarRocks的建表SQL，请遵循以下规则:
+                                    1 - 源Oracle SQL语句在Text:<>分隔符中
+                                    2 - 源sql中，如果含有text,VARCHAR2类型的字段，统一转换为varchar(5000),
+                                    int 统一转换为bigint,NUMBER统一长度为decimal(30,8)
+                                    3 - 原OracleSQL中将StarRocks不支持的关键字或语法自动屏蔽
+                                    4 - 如果字段没有注释，尝试补充中文comment
+                                    5 - markdown格式化输出    
+                                    SQL请格式化输出，输出demo：
+                                    create table if not exists table_name(
+                                      `id` int(11)  NOT NULL ,
+                                      ...
+                                      `ds` DATE
+                                      ) COMMENT '表备注'
+                                    PARTITION BY RANGE (`ds`) (
+                                      START ("date1") END ("date2") EVERY (INTERVAL 1 DAY)
+                                    )
+                                    DISTRIBUTED BY HASH(`id`) BUCKETS 9;
+                                Text: <\n
+                                """,
+            # 后语
+            "Suffix": "\n>",
+            "Color": r"secondary",  # 按钮颜色
+        },
         "代码转为Mysql建表语句": {
             # 前言
             "Prefix": """
                                 你的任务是代码转换为mysql的建表SQL，请遵循以下规则:
                                 1 - 源sql语句在Text:<>分隔符中
-                                2 - 先分析代码，来源有Java的DTO,或PHP,Golang,Python的Class属性
+                                2 - 先分析代码，来源有Java的DTO,或PHP,Golang,Python的Class属性,也有可能来自普通文本
                                 3 - 规范输出SQL建表语句，不要输出任意类型的代码块
+                                4 - 如果字段没有注释，尝试补充中文comment
+                                5 - markdown格式化输出
                             Text: <\n
                             """,
             # 后语
